@@ -42,3 +42,17 @@ $(".servicios figure").each(function(i){
 $(".icon-close").click(function(){
 	$(".presentacion_background").fadeOut(1000);
 });
+
+$("form").submit(function() {
+	$.ajax({
+		type: "POST",
+		url: $(this).attr("action"),
+		data: $(this).serialize(),
+		success: function() {
+			$("#result").html("Su mensaje se ha enviado con exito.");
+		}
+	})
+	
+	$("input, textarea").val("");
+	return false;
+});
